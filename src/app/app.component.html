@@ -1,14 +1,29 @@
 <div class="container">
   <div style="text-align:center">
     <h1>To NOT Do List for {{month}}.{{day}}.{{year}}</h1>
+    <h1>Welcome, {{userName}}!</h1>
+    <form>
+      <input [(ngModel)]="userName" type="text" name="user">
+    </form>
     <h3>{{currentFocus}}</h3>
   </div>
+  <hr>
   <h2>Here's some tasks:</h2>
+  <div *ngIf="selectedTask">
+  <h3>{{selectedTask.description}}</h3>
+  <p>Task Complete? {{selectedTask.done}}</p>
+  <h3>Edit Task</h3>
+  <label>Enter Task Description:</label>
+  <input [(ngModel)]="selectedTask.description">
+  <label>Enter Task Priority (1-3):</label>
+  <br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
+  <input type="radio" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)
+  <hr>
+  <button class="btn btn-secondary"(click)= "finishedEditing()">DONE</button>
+  </div>
   <ul>
-    <li *ngFor="let currentTask of newTask">{{currentTask.description}}</li>
+    <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of newTask">{{currentTask.description}} <button class="btn btn-secondary" (click)= "editTask(currentTask)">Edit Task</button></li>
   </ul>
-  <form id="toDoListForm">
-    <button (click)= "addTask()" type="button" name="listButton">Add Tasks</button>
-  </form>
-
 </div>

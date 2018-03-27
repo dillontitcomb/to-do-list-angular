@@ -13,12 +13,38 @@ export class AppComponent {
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
   newTask: Task[] = [
-    new Task("go to the lodge"),
-    new Task("eat a pane-pane sandwich"),
-    new Task("take some nootropics")
+    new Task("go to the lodge", 3),
+    new Task("eat a pane-pane sandwich", 1),
+    new Task("take some nootropics", 2)
   ];
 
+  selectedTask = null;
+
   addTask(){
-  alert(${`"https://vignette.wikia.nocookie.net/theloudhouse/images/a/a1/How-about-no-gif-dr-evil-4.gif/revision/latest?cb=20180202204327"}`);
+  alert("Hey fool");
+  }
+
+  finishedEditing() {
+    this.selectedTask = null;
+  }
+
+  editTask(clickedTask) {
+    this.selectedTask = clickedTask;
+  }
+
+  priorityColor(currentTask) {
+
+
+
+    if (currentTask.priority === 3) {
+
+      return "bg-danger";
+    } else if (currentTask.priority === 2) {
+      return "bg-warning";
+    } else {
+      return "bg-info";
+    }
+
+
   }
 }
