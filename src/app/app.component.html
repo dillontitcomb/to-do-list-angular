@@ -2,6 +2,7 @@
   <div style="text-align:center">
     <h1>To NOT Do List for {{month}}.{{day}}.{{year}}</h1>
     <h1>Welcome, {{userName}}!</h1>
+    <app-task-list [childTaskList]="masterTaskList" (clickSender)="editTask($event)"></app-task-list>
     <form>
       <input [(ngModel)]="userName" type="text" name="user">
     </form>
@@ -23,7 +24,4 @@
   <hr>
   <button class="btn btn-secondary"(click)= "finishedEditing()">DONE</button>
   </div>
-  <ul>
-    <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of newTask">{{currentTask.description}} <button class="btn btn-secondary" (click)= "editTask(currentTask)">Edit Task</button></li>
-  </ul>
 </div>

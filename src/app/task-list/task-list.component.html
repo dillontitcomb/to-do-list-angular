@@ -1,0 +1,4 @@
+<img src="https://i.ytimg.com/vi/pV7B8gicbfY/maxresdefault.jpg" alt="like a boss" id="bossImage">
+<ul>
+  <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}} <button class="btn btn-secondary" (click)= "editButtonClicked(currentTask)">Edit Task</button></li>
+</ul>
