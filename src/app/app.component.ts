@@ -24,11 +24,14 @@ export class AppComponent {
   selectedTask = null;
 
   editTask(clickedTask) {
-   this.selectedTask = clickedTask;
- }
+    this.selectedTask = clickedTask;
+  }
 
   finishedEditing() {
     this.selectedTask = null;
   }
 
+  addTask(newTask: Task) {
+    this.masterTaskList.push(newTask);
+  }
 }

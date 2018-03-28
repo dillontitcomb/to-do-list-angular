@@ -1,0 +1,14 @@
+label {
+  color: red;
+  font-family: Papyrus;
+  font-size: 40px;
+  border: 15px dotted lime;
+}
+
+h1 {
+  text-shadow: -6px 0 black, 0 6px black, 6px 0 black, 0 -6px cornflowerblue;
+  color: snow;
+  text-align: center;
+  font-size: 80px;
+  font-family: Papyrus;
+}

@@ -1,4 +1,15 @@
+<br>
 <img src="https://i.ytimg.com/vi/pV7B8gicbfY/maxresdefault.jpg" alt="like a boss" id="bossImage">
+<select (change) = "onChange($event.target.value)">
+  <option value="allTasks">All Tasks</option>
+  <option value="completedTasks">Completed Tasks</option>
+  <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
+</select>
+
 <ul>
-  <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList">{{currentTask.description}} <button class="btn btn-secondary" (click)= "editButtonClicked(currentTask)">Edit Task</button></li>
+  <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">{{currentTask.description}} {{currentTask.priority}}
+    <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
+    <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
+    <button class = "btn btn-secondary" (click)="editButtonClicked(currentTask)">Edit!</button>
+  </li>
 </ul>
